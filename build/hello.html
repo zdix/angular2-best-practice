@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="Description" content=""/>
+    <meta name="Keywords" content=""/>
+    <title></title>
+
+    <base href="hello.html">
+
+    <script src="vendor/base.bundle.js"></script>
+
+    <script>
+        var map = {
+            'app': '',
+            'rxjs': 'vendor/module/rxjs',
+            '@angular': 'vendor/module/angular'
+        };
+        var packages = {
+            'app': { main: 'init.js',  defaultExtension: 'js' },
+            'rxjs': { defaultExtension: 'js' },
+        };
+        var ngPackageNames = [
+            'common',
+            'compiler',
+            'core',
+            'forms',
+            'http',
+            'platform-browser',
+            'platform-browser-dynamic',
+            'router',
+            'router-deprecated',
+            'upgrade',
+        ];
+
+        function packNgUmd(pkgName) {
+            packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+        }
+
+        ngPackageNames.forEach(packNgUmd);
+
+        System.config({
+            map: map,
+            packages: packages
+        });
+
+        console.log(packages);
+
+        System.import('app').catch(function(err){ console.error(err); });
+
+    </script>
+
+</head>
+<body>
+<app>Loading...</app>
+</body>
+</html>
