@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {TabsPage} from './page/tabs/tabs';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { IonicApp, IonicModule, Platform} from 'ionic-angular';
+import { StatusBar } from 'ionic-native';
+import { TabsPage } from './page/tabs/tabs';
 
 
 @Component({
@@ -22,4 +24,16 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+@NgModule({
+    imports: [
+    ],
+    declarations: [
+        TabsPage,
+    ],
+    providers: [
+    ],
+    bootstrap: [ IonicApp ]
+})
+class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
